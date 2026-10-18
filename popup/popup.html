@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geppy's Contextile</title>
+  <link rel="stylesheet" href="../sidepanel/sidepanel.css">
+</head>
+<body>
+  <div class="sidebar-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-title">
+          <h1>Geppy's Contextile</h1>
+          <span class="version-tag">Side Panel v1.2</span>
+        </div>
+      </div>
+      
+      <!-- Mode Badge & Switcher -->
+      <div class="mode-selector">
+        <label for="modeSelect" class="sr-only">Operating Mode</label>
+        <select id="modeSelect" class="mode-dropdown" title="Select Operating Mode">
+          <option value="gemini">♊ Gemini (Ideation)</option>
+          <option value="antigravity">🚀 Antigravity (App Scaffold)</option>
+          <option value="image_gen">🎨 Image Gen (Asset Visuals)</option>
+        </select>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tab-bar">
+      <button class="tab-btn active" data-tab="tab-builder" title="Prompt & Asset Compiler">
+        <span class="tab-icon">⚡</span> Builder
+      </button>
+      <button class="tab-btn" data-tab="tab-gallery" title="Media & Asset Rules Gallery">
+        <span class="tab-icon">🖼️</span> Media
+      </button>
+      <button class="tab-btn" data-tab="tab-categories" title="Category & Modifier Manager">
+        <span class="tab-icon">🗂️</span> Categories
+      </button>
+      <button class="tab-btn" data-tab="tab-aigen" title="AI Option Generator">
+        <span class="tab-icon">🤖</span> AI Gen
+      </button>
+      <button class="tab-btn" data-tab="tab-rules" title="Geppy Character Guardrails">
+        <span class="tab-icon">🎨</span> Rules
+      </button>
+    </nav>
+
+    <main class="tab-content-container">
+      <!-- TAB 1: PROMPT & ASSET BUILDER -->
+      <section id="tab-builder" class="tab-pane active">
+        <!-- Preset Templates Selector -->
+        <div class="form-group">
+          <label for="templateSelect" class="section-label">Preset Templates</label>
+          <div class="input-with-action">
+            <select id="templateSelect" class="select-control">
+              <option value="">-- Select a Template --</option>
+            </select>
+            <button id="btnSaveTemplate" class="btn btn-secondary btn-sm" title="Save current configuration as template">💾 Save</button>
+          </div>
+        </div>
+
+        <!-- Dynamic Category Modifiers -->
+        <div class="section-label-container">
+          <span class="section-label">Category Modifiers</span>
+          <span id="activeModeNotice" class="badge badge-info">Antigravity Mode</span>
+        </div>
+        <div id="dynamicCategoriesContainer" class="categories-grid">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- MODULAR MEDIA ASSET SELECTOR -->
+        <div class="section-label-container">
+          <span class="section-label">Media & Image Reference Rules</span>
+          <span id="mediaCountBadge" class="badge badge-accent">0 Active</span>
+        </div>
+        <div id="builderMediaAssetsContainer" class="media-selector-grid">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- Prompt Context Text -->
+        <div class="form-group">
+          <label for="contextInput" class="section-label">Base Prompt Context / Core Task</label>
+          <textarea id="contextInput" class="textarea-control" rows="3" placeholder="Enter your core prompt, feature request, or visual scene context..."></textarea>
+        </div>
+
+        <!-- Character Guardrails Toggle -->
+        <div class="toggle-card">
+          <div class="toggle-info">
+            <span class="toggle-title">🕶️ Enforce Geppy Character Guardrails</span>
+            <span class="toggle-desc">Glasses, Name Tag & 2D Vector Cartoon style</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggleCharacterRules" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <!-- Live Compiled Preview -->
+        <div class="form-group">
+          <div class="preview-header">
+            <label for="previewOutput" class="section-label">Compiled Context Payload</label>
+            <button id="btnCopyPrompt" class="btn-text" title="Copy to clipboard">📋 Copy</button>
+          </div>
+          <textarea id="previewOutput" class="textarea-control preview-box" rows="6" readonly placeholder="Compiled prompt payload will appear here..."></textarea>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-footer">
+          <button id="btnInjectPrompt" class="btn btn-primary btn-lg full-width">
+            <span class="btn-icon">🚀</span> Inject into Active Tab
+          </button>
+        </div>
+      </section>
+
+      <!-- TAB 2: MEDIA & ASSET GALLERY -->
+      <section id="tab-gallery" class="tab-pane">
+        <div class="pane-header">
+          <h2>Media Asset & Rule Gallery</h2>
+          <button id="btnOpenAddAsset" class="btn btn-primary btn-sm">+ Upload Asset</button>
+        </div>
+
+        <div class="filter-bar">
+          <label for="assetFilterMode">Filter:</label>
+          <select id="assetFilterMode" class="select-control select-sm">
+            <option value="all">All Modes</option>
+            <option value="image_gen">Image Gen</option>
+            <option value="antigravity">Antigravity</option>
+            <option value="gemini">Gemini</option>
+          </select>
+        </div>
+
+        <div id="mediaGalleryContainer" class="media-gallery-grid">
+          <!-- Populated dynamically -->
+        </div>
+      </section>
+
+      <!-- TAB 3: CATEGORY & DROPDOWN MANAGER -->
+      <section id="tab-categories" class="tab-pane">
+        <div class="pane-header">
+          <h2>Manage Categories & Modifiers</h2>
+          <button id="btnOpenAddCategory" class="btn btn-primary btn-sm">+ New Category</button>
+        </div>
+
+        <div class="filter-bar">
+          <label for="categoryFilterMode">Filter:</label>
+          <select id="categoryFilterMode" class="select-control select-sm">
+            <option value="all">All Modes</option>
+            <option value="gemini">Gemini</option>
+            <option value="antigravity">Antigravity</option>
+            <option value="image_gen">Image Gen</option>
+          </select>
+        </div>
+
+        <div id="categoriesList" class="categories-management-list">
+          <!-- Populated dynamically -->
+        </div>
+      </section>
+
+      <!-- TAB 4: AI OPTION GENERATOR -->
+      <section id="tab-aigen" class="tab-pane">
+        <div class="ai-banner">
+          <div class="ai-banner-icon">✨</div>
+          <div class="ai-banner-text">
+            <h3>AI-Powered Option Generator</h3>
+            <p>Uses Chrome Built-in AI (Gemini Nano) to auto-populate category dropdown options.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="aiTargetCategory" class="section-label">Target Category</label>
+          <select id="aiTargetCategory" class="select-control">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="aiPromptInput" class="section-label">Natural Language Request</label>
+          <textarea id="aiPromptInput" class="textarea-control" rows="3" placeholder="e.g. 'Generate 4 cyberpunk lighting styles for image generation'"></textarea>
+        </div>
+
+        <button id="btnGenerateAiOptions" class="btn btn-accent full-width">
+          <span class="btn-icon">🪄</span> Generate Options with AI
+        </button>
+
+        <div id="aiStatusMessage" class="status-msg hidden"></div>
+
+        <div id="aiResultsContainer" class="ai-results-box hidden">
+          <div class="pane-header">
+            <h4>Generated Options Preview</h4>
+            <button id="btnAddAiResults" class="btn btn-success btn-sm">Add Selected to Category</button>
+          </div>
+          <div id="aiResultsList" class="ai-results-list"></div>
+        </div>
+      </section>
+
+      <!-- TAB 5: GEPPY CHARACTER RULES -->
+      <section id="tab-rules" class="tab-pane">
+        <div class="character-card">
+          <div class="character-header">
+            <div class="character-avatar">🕶️</div>
+            <div>
+              <h3>Geppy</h3>
+              <span class="badge badge-accent">Character Guardrail Engine</span>
+            </div>
+          </div>
+          
+          <div class="rules-section">
+            <div class="rule-group">
+              <span class="rule-label">Visual Art Style:</span>
+              <p id="ruleAnimationStyle" class="rule-value">Vibrant 2D vector cartoon animation style</p>
+            </div>
+
+            <div class="rule-group">
+              <span class="rule-label">Mandatory Traits (Locked):</span>
+              <ul id="ruleMandatoryTraits" class="rule-list">
+                <li>Always wears glasses</li>
+                <li>Always wears a name tag no matter what he's wearing</li>
+              </ul>
+            </div>
+
+            <div class="rule-group">
+              <span class="rule-label">Forbidden Modifications:</span>
+              <ul id="ruleForbidden" class="rule-list warning-list">
+                <li>Logo shape must never change</li>
+                <li>Character proportions must remain strictly locked</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODALS -->
+  <div id="addAssetModal" class="modal hidden">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h3 id="assetModalTitle">Add Media Asset & Associated Rules</h3>
+        <button id="btnCloseAssetModal" class="btn-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="newAssetName">Asset Name / Title</label>
+          <input type="text" id="newAssetName" class="input-control" placeholder="e.g. Geppy Character Turnaround Sheet">
+        </div>
+
+        <div class="form-group">
+          <label for="newAssetMode">Target Mode</label>
+          <select id="newAssetMode" class="select-control">
+            <option value="image_gen">Image Gen</option>
+            <option value="antigravity">Antigravity</option>
+            <option value="gemini">Gemini</option>
+            <option value="all">All Modes</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="section-label">Image Source (File Upload or Image URL)</label>
+          <div class="file-upload-area" id="dropzoneArea">
+            <input type="file" id="assetFileInput" accept="image/*" class="file-input-hidden">
+            <button id="btnBrowseFile" class="btn btn-secondary btn-sm">📁 Choose Image File</button>
+            <span class="file-or-text">or paste Image URL below:</span>
+          </div>
+          <input type="text" id="newAssetUrl" class="input-control margin-top-sm" placeholder="https://... or data:image/...">
+        </div>
+
+        <div id="assetPreviewContainer" class="asset-upload-preview hidden">
+          <img id="assetPreviewImg" src="" alt="Asset Preview">
+        </div>
+
+        <div class="form-group">
+          <label for="newAssetRules" class="section-label">Associated Prompt Rules & Constraints</label>
+          <textarea id="newAssetRules" class="textarea-control" rows="3" placeholder="Enter prompt modifiers, visual constraints, or color codes tied to this image reference..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="newAssetTags" class="section-label">Tags (comma separated)</label>
+          <input type="text" id="newAssetTags" class="input-control" placeholder="character, vector, avatar">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnSaveAsset" class="btn btn-primary">Save Media Asset</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="addCategoryModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New Category</h3>
+        <button id="btnCloseCategoryModal" class="btn-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="newCatName">Category Name</label>
+          <input type="text" id="newCatName" class="input-control" placeholder="e.g., Lighting & Atmosphere">
+        </div>
+        <div class="form-group">
+          <label for="newCatMode">Target Mode</label>
+          <select id="newCatMode" class="select-control">
+            <option value="antigravity">Antigravity</option>
+            <option value="gemini">Gemini</option>
+            <option value="image_gen">Image Gen</option>
+            <option value="all">All Modes</option>
+          </select>
+        </div>
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" id="newCatMultiSelect" checked>
+            Allow Multi-Select options
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnSaveCategory" class="btn btn-primary">Save Category</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="addOptionModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add Option Item</h3>
+        <button id="btnCloseOptionModal" class="btn-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="targetOptionCategoryId">
+        <div class="form-group">
+          <label for="newOptionLabel">Option Label</label>
+          <input type="text" id="newOptionLabel" class="input-control" placeholder="e.g., Cyberpunk Neon">
+        </div>
+        <div class="form-group">
+          <label for="newOptionModifier">Prompt Modifier Text</label>
+          <textarea id="newOptionModifier" class="textarea-control" rows="3" placeholder="e.g., Vibrant cyan and magenta rim lighting with high-contrast ambient neon shadows."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnSaveOption" class="btn btn-primary">Save Option</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../sidepanel/sidepanel.js"></script>
+</body>
+</html>

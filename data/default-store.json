@@ -1,0 +1,236 @@
+{
+  "version": "1.2.0",
+  "characterRules": {
+    "characterName": "Geppy",
+    "animationStyle": "Vibrant 2D vector cartoon animation style",
+    "mandatoryTraits": [
+      "always wears glasses",
+      "always wears a name tag no matter what he's wearing"
+    ],
+    "forbiddenModifications": [
+      "logo shape must never change",
+      "character proportions must remain strictly locked"
+    ]
+  },
+  "mediaAssets": [
+    {
+      "assetId": "asset_geppy_hero",
+      "name": "Geppy Character Reference",
+      "targetMode": "image_gen",
+      "associatedRules": "Primary character reference: Geppy wearing signature black rectangular glasses, metallic blue name tag on left chest, vibrant 2D vector cartoon animation style with crisp outlines.",
+      "imageData": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><rect width='200' height='200' rx='20' fill='%234f46e5'/><circle cx='100' cy='85' r='45' fill='%23fbbf24'/><rect x='60' y='75' width='35' height='20' rx='4' fill='%231e293b' stroke='%23ffffff' stroke-width='3'/><rect x='105' y='75' width='35' height='20' rx='4' fill='%231e293b' stroke='%23ffffff' stroke-width='3'/><line x1='95' y1='85' x2='105' y2='85' stroke='%23ffffff' stroke-width='3'/><rect x='70' y='135' width='60' height='40' rx='6' fill='%236366f1'/><rect x='80' y='145' width='40' height='15' rx='3' fill='%23ffffff'/><text x='100' y='156' font-size='10' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%231e293b'>GEPPY</text></svg>",
+      "tags": ["character", "geppy", "vector"]
+    },
+    {
+      "assetId": "asset_antigravity_blueprint",
+      "name": "Antigravity Stack Architecture Spec",
+      "targetMode": "antigravity",
+      "associatedRules": "Technical layout blueprint: Client-side React SPA, Tailwind CSS utility styling, modular file tree separation, error boundary wrap, and local state persistence.",
+      "imageData": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><rect width='200' height='200' rx='20' fill='%230f172a'/><rect x='30' y='30' width='140' height='140' rx='10' fill='%231e293b' stroke='%236366f1' stroke-width='3'/><line x1='30' y1='70' x2='170' y2='70' stroke='%23334155' stroke-width='2'/><circle cx='50' cy='50' r='6' fill='%23ef4444'/><circle cx='70' cy='50' r='6' fill='%23f59e0b'/><circle cx='90' cy='50' r='6' fill='%2310b981'/><rect x='50' y='90' width='100' height='15' rx='3' fill='%234f46e5'/><rect x='50' y='115' width='70' height='12' rx='3' fill='%23334155'/><rect x='50' y='135' width='85' height='12' rx='3' fill='%23334155'/></svg>",
+      "tags": ["architecture", "antigravity", "blueprint"]
+    },
+    {
+      "assetId": "asset_gemini_ideation",
+      "name": "Gemini Ideation Framework Spec",
+      "targetMode": "gemini",
+      "associatedRules": "Creative ideation guide: Structure response into key customer benefits, high-level product design, potential technical roadblocks, and feature roadmap priorities.",
+      "imageData": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><rect width='200' height='200' rx='20' fill='%231e1b4b'/><path d='M100 30 L120 80 L170 100 L120 120 L100 170 L80 120 L30 100 L80 80 Z' fill='%23818cf8'/><circle cx='100' cy='100' r='15' fill='%23fbbf24'/></svg>",
+      "tags": ["gemini", "ideation", "framework"]
+    }
+  ],
+  "dropdownCategories": [
+    {
+      "categoryId": "cat_app_architecture",
+      "categoryName": "App Architecture & Stack",
+      "targetMode": "antigravity",
+      "isMultiSelect": true,
+      "options": [
+        {
+          "optionId": "stack_react_tailwind",
+          "label": "React + Tailwind SPA",
+          "promptModifier": "Build a client-side single-page application using React, Tailwind CSS, and local storage state management."
+        },
+        {
+          "optionId": "stack_next_firebase",
+          "label": "Next.js + Firebase App",
+          "promptModifier": "Build a full-stack Next.js web application integrated with Firebase Authentication, Firestore, and Tailwind styling."
+        },
+        {
+          "optionId": "stack_chrome_extension",
+          "label": "Chrome Extension (Manifest V3)",
+          "promptModifier": "Build a Manifest V3 Chrome Extension with background service worker, side panel UI, content script DOM injection, and chrome.storage.local persistence."
+        }
+      ]
+    },
+    {
+      "categoryId": "cat_code_quality",
+      "categoryName": "Engineering & Code Quality",
+      "targetMode": "antigravity",
+      "isMultiSelect": true,
+      "options": [
+        {
+          "optionId": "quality_production_ready",
+          "label": "Production-Ready & Modular",
+          "promptModifier": "Write modular, fully typed, well-commented, production-ready clean code following SOLID design principles and robust error handling."
+        },
+        {
+          "optionId": "quality_test_driven",
+          "label": "Defensive & Validated",
+          "promptModifier": "Include defensive checks, complete input validations, error boundaries, and zero unhandled exception side-effects."
+        }
+      ]
+    },
+    {
+      "categoryId": "cat_ui_theme",
+      "categoryName": "UI Design System & Styling",
+      "targetMode": "antigravity",
+      "isMultiSelect": false,
+      "options": [
+        {
+          "optionId": "ui_dark_modern",
+          "label": "Modern Dark Mode UI",
+          "promptModifier": "Design a slick, modern dark mode interface with subtle gradient borders, crisp typography, and interactive micro-animations."
+        },
+        {
+          "optionId": "ui_clean_dashboard",
+          "label": "Clean Dashboard Layout",
+          "promptModifier": "Create an intuitive dashboard layout with tabbed navigation, responsive grid cards, and clear visual hierarchy."
+        }
+      ]
+    },
+    {
+      "categoryId": "cat_gemini_tone",
+      "categoryName": "Creative Tone & Voice",
+      "targetMode": "gemini",
+      "isMultiSelect": false,
+      "options": [
+        {
+          "optionId": "tone_visionary",
+          "label": "Visionary & Strategic",
+          "promptModifier": "Adopt a visionary, strategic tone focusing on high-level feature conceptualization, long-term scalability, and user impact."
+        },
+        {
+          "optionId": "tone_analytical",
+          "label": "Analytical & Structured",
+          "promptModifier": "Provide an analytical breakdown with structured feature hierarchies, edge-case evaluation, and trade-off comparisons."
+        }
+      ]
+    },
+    {
+      "categoryId": "cat_brainstorm_framework",
+      "categoryName": "Brainstorming Framework",
+      "targetMode": "gemini",
+      "isMultiSelect": true,
+      "options": [
+        {
+          "optionId": "framework_first_principles",
+          "label": "First Principles Breakdown",
+          "promptModifier": "Break down core user pain points from first principles and map out step-by-step product capabilities to address them."
+        },
+        {
+          "optionId": "framework_roadmap",
+          "label": "Phased Feature Roadmap",
+          "promptModifier": "Structure recommendations into Phase 1 (MVP core), Phase 2 (Growth & Automation), and Phase 3 (Advanced Ecosystem Integration)."
+        }
+      ]
+    },
+    {
+      "categoryId": "img_cat_composition",
+      "categoryName": "Composition & Framing",
+      "targetMode": "image_gen",
+      "isMultiSelect": false,
+      "options": [
+        {
+          "optionId": "opt_action_scene",
+          "label": "Dynamic Action Scene",
+          "promptModifier": "Dynamic wide-angle action pose interacting with high-tech environment elements."
+        },
+        {
+          "optionId": "opt_hero_portrait",
+          "label": "Heroic Studio Portrait",
+          "promptModifier": "Centered medium-up studio character portrait with clean background depth of field."
+        },
+        {
+          "optionId": "opt_isometric_view",
+          "label": "Isometric 3D Workspace",
+          "promptModifier": "Clean 3D isometric perspective showcasing character working inside a futuristic software lab."
+        }
+      ]
+    },
+    {
+      "categoryId": "img_cat_lighting",
+      "categoryName": "Lighting & Mood",
+      "targetMode": "image_gen",
+      "isMultiSelect": true,
+      "options": [
+        {
+          "optionId": "opt_neon_cyberpunk",
+          "label": "Cyberpunk Neon Glow",
+          "promptModifier": "Vibrant cyan and magenta rim lighting with high-contrast ambient neon shadows."
+        },
+        {
+          "optionId": "opt_soft_studio",
+          "label": "Soft Studio Lighting",
+          "promptModifier": "Soft diffused studio lighting with gentle key light reflection and subtle rim highlight."
+        }
+      ]
+    },
+    {
+      "categoryId": "img_cat_color_palette",
+      "categoryName": "Color Palette",
+      "targetMode": "image_gen",
+      "isMultiSelect": false,
+      "options": [
+        {
+          "optionId": "opt_vibrant_brand",
+          "label": "Vibrant Vector Palette",
+          "promptModifier": "Bright vibrant primary color palette with bold vector outlines and high visual clarity."
+        },
+        {
+          "optionId": "opt_pastel_tech",
+          "label": "Soft Pastel Tech",
+          "promptModifier": "Clean modern pastel color scheme with clean white and soft blue accent highlights."
+        }
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "templateId": "t-arcade-01",
+      "templateName": "Geppy's App Builder Blueprint",
+      "targetPlatform": "antigravity",
+      "includeCharacterRules": true,
+      "selectedOptions": {
+        "cat_app_architecture": ["stack_react_tailwind"],
+        "cat_code_quality": ["quality_production_ready"]
+      },
+      "selectedMediaAssetIds": ["asset_antigravity_blueprint"],
+      "contextText": "Build a dashboard manager for Geppy's tools."
+    },
+    {
+      "templateId": "t-gemini-01",
+      "templateName": "Creative Ideation & Roadmap",
+      "targetPlatform": "gemini",
+      "includeCharacterRules": false,
+      "selectedOptions": {
+        "cat_gemini_tone": ["tone_visionary"],
+        "cat_brainstorm_framework": ["framework_first_principles", "framework_roadmap"]
+      },
+      "selectedMediaAssetIds": ["asset_gemini_ideation"],
+      "contextText": "Brainstorm 5 innovative feature workflows for Chrome extension power users."
+    },
+    {
+      "templateId": "t-imagegen-01",
+      "templateName": "Geppy Visual Character Prompt",
+      "targetPlatform": "image_gen",
+      "includeCharacterRules": true,
+      "selectedOptions": {
+        "img_cat_composition": ["opt_hero_portrait"],
+        "img_cat_lighting": ["opt_neon_cyberpunk"],
+        "img_cat_color_palette": ["opt_vibrant_brand"]
+      },
+      "selectedMediaAssetIds": ["asset_geppy_hero"],
+      "contextText": "Geppy standing in front of a multi-monitor developer workstation."
+    }
+  ]
+}
